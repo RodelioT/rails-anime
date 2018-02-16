@@ -1,0 +1,19 @@
+<h1>About</h1>
+<p>This site, along with its data will be centered around Japanese animated shows, also known as Anime.</p>
+<p>My first data source is a .csv file containing its name, genres, episode count, rating, and a given anime_id from the source I’ve gotten it from. It also contains information on type (show, movie, special, etc) and members (or ‘likes’); both of which aren’t used.</p>
+<p>My second data source is a collection of xml files, where each file is a specific season of a specific year (2013_summer, 2017_winter, etc). Each file contains all the anime which was released in that time period. It contains information on the producing company(ies) that made the show, and an image_url of the show.</p>
+<p>My third data source is just going to be Faker Gem information, which is going to be used for the names of the people who work at each producing company.</p>
+<p>From those 3 data sources, I will have a total of 4 tables (Anime, Genre, Producer, Employee), with an additional 2 join tables for many-to-many relationships</p>
+<ul>
+  <li>An Anime can have many Genres, and a Genre can be portrayed by many Anime</li>
+  <li>An Anime can have many Producers, and a Producer can produce many Anime</li>
+  <li>A Producer can have many Employees, but an Employee belongs to one Producer</li>
+</ul>
+<p>Each table has the following columns:</p>
+<ul>
+  <li>Anime: name, episode_count, rating, image_url, mal_id</li>
+  <li>Genre: name</li>
+  <li>Producer: name</li>
+  <li>Employee: name</li>
+</ul>
+<%= image_tag 'anime_database.png' %>

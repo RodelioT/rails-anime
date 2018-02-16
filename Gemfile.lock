@@ -137,6 +137,7 @@ GEM
     selenium-webdriver (3.9.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.2)
+    smarter_csv (1.2.3)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -180,10 +181,12 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
+  nokogiri (~> 1.6, >= 1.6.8)
   puma (~> 3.7)
   rails (~> 5.1.4)
   sass-rails (~> 5.0)
   selenium-webdriver
+  smarter_csv
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3

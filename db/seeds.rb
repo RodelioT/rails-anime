@@ -1,7 +1,14 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+# Start with an empty database before adding stuff
+Anime.delete_all
+
+csv_filename = Rails.root + 'db/anime_database_sample.csv'
+xml_file = he
+
+options = { key_mapping: { anime_id: :mal_id, episodes: :episode_count,
+                           genre: nil, type: nil, members: nil } }
+
+animes = SmarterCSV.process(csv_filename, options)
+
+animes[0..99].each do |a|
+  anime = Anime.create(a)
+end

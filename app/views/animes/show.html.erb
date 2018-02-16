@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Mal:</strong>
+  <%= @anime.mal_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @anime.name %>
+</p>
+
+<p>
+  <strong>Episode count:</strong>
+  <%= @anime.episode_count %>
+</p>
+
+<p>
+  <strong>Rating:</strong>
+  <%= @anime.rating %>
+</p>
+
+<p>
+  <strong>Image url:</strong>
+  <%= @anime.image_url %>
+</p>
+
+<%= link_to 'Edit', edit_anime_path(@anime) %> |
+<%= link_to 'Back', animes_path %>

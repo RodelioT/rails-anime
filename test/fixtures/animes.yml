@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  mal_id: 1
+  name: MyString
+  episode_count: 1
+  rating: 9.99
+  image_url: MyString
+
+two:
+  mal_id: 1
+  name: MyString
+  episode_count: 1
+  rating: 9.99
+  image_url: MyString

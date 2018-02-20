@@ -4,7 +4,8 @@ class AnimesController < ApplicationController
   # GET /animes
   # GET /animes.json
   def index
-    @animes = Anime.all
+    # @animes = Anime.all
+    @animes = Anime.page(params[:page]).per(15)
   end
 
   # GET /animes/1

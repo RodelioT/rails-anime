@@ -35,14 +35,14 @@ gem 'jbuilder', '~> 2.5'
 
 
 
+# Self-added Gems
 # Adds more functionality when parsing csv files
 gem 'smarter_csv'
-
 # Adds Nokogiri, an XML (and many more) parser
 gem 'nokogiri', '~> 1.6', '>= 1.6.8'
-
 # Adds Kaminari for pagination
 gem 'kaminari'
+
 
 
 group :development, :test do

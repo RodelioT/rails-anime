@@ -4,7 +4,7 @@ Anime.delete_all
 Genre.delete_all
 
 csv_filename = Rails.root + 'db/anime_database_sample.csv'
-xml_file = Nokogiri::XML(Rails.root + 'db/season_data/2016_summer.xml')
+xml_file = Nokogiri::XML(File.read(Rails.root + 'db/season_data/2016_summer.xml'))
 
 options = { key_mapping: { anime_id: :mal_id, episodes: :episode_count,
                            type: nil, members: nil } }
@@ -25,6 +25,20 @@ animes[0..255].each do |anime_item|
   end
 end
 
-# puts 'finish'
-# array = xml_file.xpath('//title').map{ |node| node.text }
-# puts array
+puts 'finish'
+
+
+# Creates a hash of hashes with the format: "32574" => {:producers=>"TOHO animation, Bones",
+#                                                       :image_url=>"https://myanimelist.cdn-dena.com/images/anime/10/79209.jpg"}
+season_data_hash = {}
+
+array = xml_file.css('season anime')
+array[0..2].each do |anime|
+  producers_node = anime.css('producers').text
+  image_node = anime.css('image').text
+  id_node = anime.css('id').text
+
+  season_data_hash[id_node] = { producers: producers_node, image_url: image_node }
+end
+
+puts season_data_hash

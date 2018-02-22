@@ -31,7 +31,7 @@ options = { key_mapping: { anime_id: :mal_id, episodes: :episode_count,
                            type: nil, members: nil } }
 animes = SmarterCSV.process(csv_filename, options)
 
-animes[0..63].each do |anime_item|
+animes.each do |anime_item|
   anime_item[:genre] = 'unlisted' if anime_item[:genre].nil?
 
   csv_genres = anime_item[:genre].split(',').map(&:strip).compact
@@ -41,7 +41,7 @@ animes[0..63].each do |anime_item|
 
   # Inserting the image_url if the mal_id exists in the xml files
   mal_id_key = 'mal_id' + anime_item[:mal_id].to_s
-  anime_item[:image_url] = season_data_hash.key?(mal_id_key) ? season_data_hash[mal_id_key][:image_url] : 'https://i.imgur.com/NkXDT1E.png'
+  anime_item[:image_url] = season_data_hash.key?(mal_id_key) ? season_data_hash[mal_id_key][:image_url] : 'https://i.imgur.com/6swzwbH.png'
 
   anime = Anime.create(anime_item)
 

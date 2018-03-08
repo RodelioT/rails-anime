@@ -1,9 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<p>
+<h1>
   <strong>Name:</strong>
   <%= @producer.name %>
-</p>
+</h1>
+
+<ul>
+  <% @producer.animes.each do |anime| %>
+    <li><%= anime.name %></li>
+  <% end %>
+</ul>
 
 <%= link_to 'Edit', edit_producer_path(@producer) %> |
 <%= link_to 'Back', producers_path %>

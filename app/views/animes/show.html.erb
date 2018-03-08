@@ -1,14 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Mal:</strong>
-  <%= @anime.mal_id %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @anime.name %>
-</p>
+<h1><%= @anime.name %></h1>
 
 <p>
   <strong>Episode count:</strong>
@@ -21,13 +13,18 @@
 </p>
 
 <p>
-  <strong>Image url:</strong>
+  <strong>Image:</strong>
   <%= image_tag @anime.image_url, height:400 %>
 </p>
 
 <p>
   <strong>Categories:</strong>
   <%= @anime.genres.pluck(:name).join(', ') %>
+</p>
+
+<p>
+  <strong>Producers:</strong>
+  <%= @anime.producers.pluck(:name).join(', ') %>
 </p>
 
 <%= link_to 'Edit', edit_anime_path(@anime) %> |

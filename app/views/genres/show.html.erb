@@ -1,9 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
+<h1>
+  <strong>Genre:</strong>
   <%= @genre.name %>
-</p>
+</h1>
+
+
+<ul>
+  <% @genre.animes.each do |anime| %>
+    <li><%= anime.name %></li>
+  <% end %>
+</ul>
+
 
 <%= link_to 'Edit', edit_genre_path(@genre) %> |
 <%= link_to 'Back', genres_path %>

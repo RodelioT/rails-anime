@@ -5,9 +5,17 @@
   <%= @producer.name %>
 </h1>
 
+<p>List of Anime:</p>
 <ul>
   <% @producer.animes.each do |anime| %>
     <li><%= anime.name %></li>
+  <% end %>
+</ul>
+
+<p>List of Employees:</p>
+<ul>
+  <% @producer.employees.each do |employee| %>
+    <li><%= employee.name %></li>
   <% end %>
 </ul>
 

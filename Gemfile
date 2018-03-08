@@ -42,7 +42,8 @@ gem 'smarter_csv'
 gem 'nokogiri', '~> 1.6', '>= 1.6.8'
 # Adds Kaminari for pagination
 gem 'kaminari'
-
+# Adds gem for creating fake data
+gem 'faker'
 
 
 group :development, :test do

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180308014926) do
+ActiveRecord::Schema.define(version: 20180308194717) do
 
   create_table "anime_genres", force: :cascade do |t|
     t.integer "anime_id"
@@ -36,6 +36,12 @@ ActiveRecord::Schema.define(version: 20180308014926) do
     t.integer "episode_count"
     t.decimal "rating"
     t.string "image_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "employees", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

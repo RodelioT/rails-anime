@@ -33,7 +33,8 @@ options = { key_mapping: { anime_id: :mal_id, episodes: :episode_count,
                            type: nil, members: nil } }
 animes = SmarterCSV.process(csv_filename, options)
 
-animes[0..63].each do |anime_item|
+# Starts creating Anime rows
+animes[0..19].each do |anime_item|
   anime_item[:genre] = 'unlisted' if anime_item[:genre].nil?
 
   csv_genres = anime_item[:genre].split(',').map(&:strip).compact
@@ -52,15 +53,24 @@ animes[0..63].each do |anime_item|
 
   anime = Anime.create(anime_item)
 
+  # Starts creating Genre rows
   csv_genres.each do |genre_name|
     # Creates a Genres row from the genre.name, if it doesn't exist already
     genre = Genre.find_or_create_by(name: genre_name)
     AnimeGenre.create(anime: anime, genre: genre)
   end
 
+  # Starts creating Producer rows
   csv_producers.each do |producer_item|
     producer = Producer.find_or_create_by(name: producer_item)
     AnimeProducer.create(anime: anime, producer: producer)
+
+    # Starts creating Employee rows for each Producer if the Producer doesn't have Employees yet
+    if producer.employees.empty?
+      25.times do
+        producer.employees.create(name: Faker::Name.name)
+      end
+    end
   end
 end
 

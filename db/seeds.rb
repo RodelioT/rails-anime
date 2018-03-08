@@ -1,7 +1,9 @@
 # Start with an empty database before adding stuff
 AnimeGenre.delete_all
+AnimeProducer.delete_all
 Anime.delete_all
 Genre.delete_all
+Producer.delete_all
 
 # Creates a hash of hashes to store all season data with the format:
 # {"mal_id32574" => {:producers=>"TOHO animation, Bones",
@@ -43,12 +45,22 @@ animes[0..63].each do |anime_item|
   mal_id_key = 'mal_id' + anime_item[:mal_id].to_s
   anime_item[:image_url] = season_data_hash.key?(mal_id_key) ? season_data_hash[mal_id_key][:image_url] : 'https://i.imgur.com/6swzwbH.png'
 
+  # Fetches all the producers for the currently processed anime
+  producer_list = season_data_hash.key?(mal_id_key) ? season_data_hash[mal_id_key][:producers] : 'unlisted'
+
+  csv_producers = producer_list.split(',').map(&:strip).compact
+
   anime = Anime.create(anime_item)
 
   csv_genres.each do |genre_name|
     # Creates a Genres row from the genre.name, if it doesn't exist already
     genre = Genre.find_or_create_by(name: genre_name)
     AnimeGenre.create(anime: anime, genre: genre)
+  end
+
+  csv_producers.each do |producer_item|
+    producer = Producer.find_or_create_by(name: producer_item)
+    AnimeProducer.create(anime: anime, producer: producer)
   end
 end
 

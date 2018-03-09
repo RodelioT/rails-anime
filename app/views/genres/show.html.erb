@@ -5,10 +5,10 @@
   <%= @genre.name %>
 </h1>
 
-
+<p>List of anime that are tagged with <%= @genre.name %></p>
 <ul>
   <% @genre.animes.each do |anime| %>
-    <li><%= anime.name %></li>
+    <li><%= link_to anime.name, anime %></li>
   <% end %>
 </ul>
 

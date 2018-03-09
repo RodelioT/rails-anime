@@ -19,12 +19,16 @@
 
 <p>
   <strong>Categories:</strong>
-  <%= @anime.genres.pluck(:name).join(', ') %>
+  <% @anime.genres.each do |genre| %>
+    <%= link_to genre.name, genre %>
+  <% end %>
 </p>
 
 <p>
   <strong>Producers:</strong>
-  <%= @anime.producers.pluck(:name).join(', ') %>
+  <% @anime.producers.each do |producer| %>
+    <%= link_to producer.name, producer %>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_anime_path(@anime) %> |

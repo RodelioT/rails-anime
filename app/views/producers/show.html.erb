@@ -1,23 +1,26 @@
 <p id="notice"><%= notice %></p>
 
 <h1>
-  <strong>Name:</strong>
+  <strong>Producer:</strong>
   <%= @producer.name %>
 </h1>
 
 <p>List of Anime:</p>
 <ul>
   <% @producer.animes.each do |anime| %>
-    <li><%= anime.name %></li>
+    <li><%= link_to anime.name, anime %></li>
   <% end %>
 </ul>
 
-<p>List of Employees:</p>
-<ul>
-  <% @producer.employees.each do |employee| %>
-    <li><%= employee.name %></li>
-  <% end %>
-</ul>
+<!-- Display the list of employees for the Producer unless the Producer is 'unlisted' -->
+<% if @producer.name != 'unlisted' %>
+  <p>List of Employees:</p>
+  <ul>
+    <% @producer.employees.each do |employee| %>
+      <li><%= employee.name %></li>
+    <% end %>
+  </ul>
+<% end %>
 
 <%= link_to 'Edit', edit_producer_path(@producer) %> |
 <%= link_to 'Back', producers_path %>

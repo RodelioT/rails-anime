@@ -67,10 +67,10 @@ animes[0..19].each do |anime_item|
     AnimeProducer.create(anime: anime, producer: producer)
 
     # Starts creating Employee rows for each Producer if the Producer doesn't have Employees yet
-    if producer.employees.empty?
-      25.times do
-        producer.employees.create(name: Faker::Name.name)
-      end
+    # Producer name of 'unlisted' shouldn't have employees
+    next unless producer.employees.empty? && producer.name != 'unlisted'
+    25.times do
+      producer.employees.create(name: Faker::Name.name)
     end
   end
 end

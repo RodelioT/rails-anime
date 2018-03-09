@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :genres
   resources :animes
 
+  get 'search', to: 'search#index', as: 'search'
+
   # To make localhost:3000 redirect you to the animes index
   root to: 'animes#index'
 

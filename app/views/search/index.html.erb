@@ -1,0 +1,12 @@
+<h1>Search Results</h1>
+<p><%= pluralize(@animes.size, 'result') %> found for: "<%= @search_terms %>"</p>
+
+<ul>
+  <% @animes.each do |anime| %>
+    <li><%= link_to anime.name, anime %></li>
+  <% end %>
+</ul>
+
+
+
+

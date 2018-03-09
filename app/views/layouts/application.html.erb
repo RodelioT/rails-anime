@@ -6,8 +6,15 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
 
+    <ul>
+      <li><%= link_to 'Anime', animes_path %></li>
+      <li><%= link_to 'Genres', genres_path %></li>
+      <li><%= link_to 'Producers', producers_path %></li>
+      <li><%= link_to 'About', about_path %></li>
+    </ul>
+
+  </head>
   <body>
     <%= yield %>
   </body>

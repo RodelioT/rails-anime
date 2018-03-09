@@ -3,7 +3,9 @@ AnimeGenre.delete_all
 AnimeProducer.delete_all
 Anime.delete_all
 Genre.delete_all
+Employee.delete_all
 Producer.delete_all
+
 
 # Creates a hash of hashes to store all season data with the format:
 # {"mal_id32574" => {:producers=>"TOHO animation, Bones",
@@ -48,7 +50,6 @@ animes[0..19].each do |anime_item|
 
   # Fetches all the producers for the currently processed anime
   producer_list = season_data_hash.key?(mal_id_key) ? season_data_hash[mal_id_key][:producers] : 'unlisted'
-
   csv_producers = producer_list.split(',').map(&:strip).compact
 
   anime = Anime.create(anime_item)

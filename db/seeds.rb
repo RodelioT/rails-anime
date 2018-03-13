@@ -36,7 +36,7 @@ options = { key_mapping: { anime_id: :mal_id, episodes: :episode_count,
 animes = SmarterCSV.process(csv_filename, options)
 
 # Starts creating Anime rows
-animes[0..19].each do |anime_item|
+animes[0..99].each do |anime_item|
   anime_item[:genre] = 'unlisted' if anime_item[:genre].nil?
 
   csv_genres = anime_item[:genre].split(',').map(&:strip).compact
